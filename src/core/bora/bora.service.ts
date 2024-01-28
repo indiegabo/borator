@@ -21,7 +21,7 @@ export class BoraService {
 
         if (loweredMessage.includes('fila') && loweredMessage.includes('aberta')) {
             this.tmiService.sendMessage('!bora');
-            this.tmiService.sendMessage(`Olá gente. Eu sou o BORATOR. O IndieGabo estava cansado de nunca conseguir ser o primeiro a borar e delegou a tarefa a mim. Beijos!`);
+            this.tmiService.sendMessage(`Olá gente. Eu sou o BORATOR. O IndieGabo estava cansado de nunca conseguir ser o primeiro a borar e delegou a tarefa a mim. Aeeee Poxaaaa! Agora fooooi...!`);
         }
     }
 }
