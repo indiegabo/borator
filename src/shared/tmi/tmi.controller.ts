@@ -24,7 +24,7 @@ export class TMIController {
     async sendMessage(@Query() query): Promise<void> {
         if (!query.message || query.message === '') return;
 
-        this.tmiService.sendMessage(query.message);
+        this.tmiService.sendMessage('indiegabo', query.message);
     }
 
     @Get('test')

@@ -13,8 +13,6 @@ export class TwitchService {
     ) {
         this.botLogger.setContext('TwitchService');
         this.client = new TwitchApi(TWITCH_CONNECTION_CONFIG);
-
-        this
     }
 
     async getUsers(ids: string[]): Promise<User[]> {

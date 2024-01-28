@@ -13,16 +13,16 @@ export class BoraService {
     }
 
     @OnEvent('ChatMessage.marvin_theparanoidbot')
-    handleMessage(chatMessage: { username: string, message: string }) {
+    handleMessage(chatMessage: { channel: string, username: string, message: string }) {
         this.botLogger.log(`Mensagem do Marvin: ${chatMessage.message}`);
         const loweredMessage = chatMessage.message.toLowerCase();
 
         this.botLogger.log('Mensagem do marvin reconhecida: ' + loweredMessage);
 
         if (loweredMessage.includes('fila') && loweredMessage.includes('aberta')) {
-            this.tmiService.sendMessage('!bora');
-            this.tmiService.sendMessage(`Olá gente. Eu sou o BORATOR, o novo bot do IndieGabo.`);
-            this.tmiService.sendMessage(`Ele tava cansado de nunca conseguir ser o primeiro a borar e delegou a tarefa a mim. Aeeee Poxaaaa! Agora fooooi...!`);
+            this.tmiService.sendMessage(chatMessage.channel, '!bora');
+            this.tmiService.sendMessage(chatMessage.channel, `Olá gente. Eu sou o BORATOR, o novo bot do IndieGabo.`);
+            this.tmiService.sendMessage(chatMessage.channel, `Ele tava cansado de nunca conseguir ser o primeiro a borar e delegou a tarefa a mim. Aeeee Poxaaaa! Agora fooooi...!`);
         }
     }
 }

@@ -30,12 +30,19 @@ export class TMIService {
         }
     }
 
-    public sendMessage(message: string) {
-        this.client?.say('bunkerdomarco', message);
+    public sendMessage(channel: string, message: string) {
+        this.client?.say(channel, message);
     }
 
     private handleMessage(channel: string, tags: any, message: string) {
         this.eventEmitter.emit(`ChatMessage.${tags.username}`, {
+            channel: channel,
+            username: tags.username,
+            message: message
+        });
+
+        this.eventEmitter.emit(`ChatMessage`, {
+            channel: channel,
             username: tags.username,
             message: message
         });
@@ -64,10 +71,11 @@ export class TMIService {
                     username: 'indiegabo',
                     password: `oauth:${token}`
                 },
-                channels: ['bunkerdomarco']
+                channels: ['bunkerdomarco', 'indiegabo']
             });
 
             this.client.connect();
+            this.client.on('message', this.handleMessage.bind(this));
             return true;
 
         } catch (e) {
