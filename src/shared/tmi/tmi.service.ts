@@ -35,7 +35,7 @@ export class TMIService {
     }
 
     private handleMessage(channel: string, tags: any, message: string) {
-        this.eventEmitter.emit('ChatMessage', {
+        this.eventEmitter.emit(`ChatMessage.${tags.username}`, {
             username: tags.username,
             message: message
         });

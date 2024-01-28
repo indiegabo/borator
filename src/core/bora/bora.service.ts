@@ -12,10 +12,9 @@ export class BoraService {
         this.botLogger.setContext('BoraService');
     }
 
-    @OnEvent('ChatMessage')
-    private handleMessage(chatMessage: { username: string, message: string }) {
-        if (chatMessage.username !== 'marvin_theparanoidbot') return;
-
+    @OnEvent('ChatMessage.marvin_theparanoidbot')
+    handleMessage(chatMessage: { username: string, message: string }) {
+        this.botLogger.log(`Mensagem do Marvin: ${chatMessage.message}`);
         const loweredMessage = chatMessage.message.toLowerCase();
 
         this.botLogger.log('Mensagem do marvin reconhecida: ' + loweredMessage);
