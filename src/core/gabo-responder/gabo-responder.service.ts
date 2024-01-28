@@ -20,14 +20,14 @@ export class GaboResponderService {
         if (chatMessage.username === 'indiegabo' && !loweredMessage.startsWith('!gpt')) return;
 
         if (loweredMessage.includes('indiegabo') || loweredMessage.includes('gabo') || loweredMessage.includes('@indiegabo')) {
-            this.respond(chatMessage.username, chatMessage.message);
+            this.respond(chatMessage.channel, chatMessage.username, chatMessage.message);
         }
     }
 
-    private async respond(username: string, message: string) {
+    private async respond(channel: string, username: string, message: string) {
         const answer = await this.gptService.respodingTwitchChat(message, username);
 
         this.botLogger.log(`Enviando resposta para o ${username}: ${answer}`);
-        this.tmiService.sendMessage('indiegabo', answer);
+        this.tmiService.sendMessage(channel, answer);
     }
 }

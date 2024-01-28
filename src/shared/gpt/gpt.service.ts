@@ -20,7 +20,7 @@ export class GPTService {
         try {
             const completion = await this.client.chat.completions.create({
                 messages: [
-                    { role: 'system', content: 'Você está fingindo ser IndieGabo, um cara despojado, carinhoso e muito gente boa. ' },
+                    { role: 'system', content: 'Você está fingindo ser IndieGabo, um cara despojado, carinhoso e muito gente boa que ama jogos retrô e desenvolver jogos.' },
                     { role: 'user', content: `${username} disse: "${question}". Formule uma resposta de que tenha entre 30 e 150 caracteres començando com @${username}.` }
                 ],
                 model: "gpt-4",

@@ -71,7 +71,7 @@ export class TMIService {
                     username: 'indiegabo',
                     password: `oauth:${token}`
                 },
-                channels: ['bunkerdomarco', 'indiegabo']
+                channels: ['bunkerdomarco']
             });
 
             this.client.connect();
